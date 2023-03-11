@@ -74,8 +74,10 @@ const Post = ({ post, setCurrentId }) => {
         }
         title={post.title}
         controls
-      /> */}      
+      />      */}
+      <div >
       <ReactPlayer className={classes.media} url={post.videoLink} onPlay={handleVideoStart } controls/>
+      </div>
       <div className={classes.overlay}>
         <Typography variant="h6">{post.name}</Typography>
         <Typography variant="body2">

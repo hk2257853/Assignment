@@ -65,6 +65,15 @@ const Navbar = () => {
             <Typography className={classes.userName} variant="h6">
               {user.result.name}
             </Typography>
+            <Link to='/history'>
+            <Button
+              variant="contained"
+              className={classes.logout}
+              color="primary"              
+            >
+              History
+            </Button>
+            </Link>
             <Button
               variant="contained"
               className={classes.logout}

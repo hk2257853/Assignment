@@ -2,24 +2,24 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux"; // to fetch data from redux store
 import { Grid, CircularProgress } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { getPosts } from "../../actions/posts";
+import { getHistory } from "../../actions/history";
 
-import Post from "./History/History";
+import History from "./History/History";
 import useStyles from "./styles";
 
-const Posts = () => {
+const Historypg = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getPosts());
+    dispatch(getHistory());
   }, [dispatch]);
 
   const classes = useStyles();
-  const posts = useSelector((state) => state.posts); // .posts - see index.js (reducers)
-  console.log(posts);
+  const history = useSelector((state) => state.history);
+  console.log(history);
 
   // if len != 0 show the posts else CircularProgress
   // the hmtl code here is for the outer layout. just comment/change values n play
-  return !posts.length ? (
+  return !history.length ? (
     <CircularProgress />
   ) : (
     <Grid
@@ -28,13 +28,13 @@ const Posts = () => {
       alignItems="stretch"
       spacing={3}
     >
-      {posts.map((post) => (
+      {history.map((post) => (
         <Grid key={post._id} item xs={12} sm={6} md={6}>
-          <Post post={post} />{" "}
+          <History post={post} />{" "}
         </Grid>
       ))}
     </Grid>
   );
 };
 
-export default Posts;
+export default Historypg;

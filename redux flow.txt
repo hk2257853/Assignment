@@ -1,0 +1,10 @@
+eg: submit form 
+
+in componenets->Form.js I have handle submit function
+it will dispatch an action, here - createPost (defined iin actions->posts.js)
+in that function we do the api call & dispatch a reducer(to update the state in store - thus ui)
+defined in reducers->post.js
+(it was update, I'll do the filtering here in place of that componenet unlike the non redux projects)
+
+main advantage: in bigger projects helps for state management.
+won't have to pass the prop to child I can directly access from redux store using useSelector (just define in reducers->index.js)

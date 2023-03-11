@@ -6,3 +6,6 @@ export const LIKE = "LIKE";
 
 export const AUTH = "AUTH";
 export const LOGOUT = "LOGOUT";
+
+export const CREATE_HISTORY = "CREATE_HISTORY"
+export const FETCH_HISTORY = "FETCH_HISTORY"

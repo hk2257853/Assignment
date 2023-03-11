@@ -13,15 +13,24 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment"; // stuff like a min ago, 5 min ago etc
 import { useDispatch } from "react-redux";
 import ThumbUpAltOutlined from "@material-ui/icons/ThumbUpAltOutlined";
+import ReactPlayer from "react-player";
 
 import useStyles from "./styles";
 import { likePost, deletePost } from "../../../actions/posts";
 import Player from "./player";
+import { createHistory } from "../../../api";
 
 const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
+
+  // TODO: update time in history if I watch the video again (later)
+  const handleVideoStart = async () => {
+    // e.preventDefault();
+    console.log("video started")
+    dispatch(createHistory(post));
+  };
 
   const Likes = () => {
     console.log(post.likes.length);
@@ -54,7 +63,7 @@ const Post = ({ post, setCurrentId }) => {
 
   // this html code is for inner layout for each card
   return (
-    console.log(post.videoLink),
+    // console.log(post.videoLink),
     <Card className={classes.card}>
       {/* <CardMedia
         component="video"
@@ -65,8 +74,8 @@ const Post = ({ post, setCurrentId }) => {
         }
         title={post.title}
         controls
-      /> */}
-      <Player videoLink={post.videoLink}></Player>
+      /> */}      
+      <ReactPlayer className={classes.media} url={post.videoLink} onPlay={handleVideoStart } controls/>
       <div className={classes.overlay}>
         <Typography variant="h6">{post.name}</Typography>
         <Typography variant="body2">

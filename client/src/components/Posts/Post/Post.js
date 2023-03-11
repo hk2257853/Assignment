@@ -16,6 +16,7 @@ import ThumbUpAltOutlined from "@material-ui/icons/ThumbUpAltOutlined";
 
 import useStyles from "./styles";
 import { likePost, deletePost } from "../../../actions/posts";
+import Player from "./player";
 
 const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
@@ -53,15 +54,19 @@ const Post = ({ post, setCurrentId }) => {
 
   // this html code is for inner layout for each card
   return (
+    console.log(post.videoLink),
     <Card className={classes.card}>
-      <CardMedia
+      {/* <CardMedia
+        component="video"
         className={classes.media}
-        image={
-          post.selectedFile ||
+        src={
+          post.videoLink ||
           "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
         }
         title={post.title}
-      />
+        controls
+      /> */}
+      <Player videoLink={post.videoLink}></Player>
       <div className={classes.overlay}>
         <Typography variant="h6">{post.name}</Typography>
         <Typography variant="body2">

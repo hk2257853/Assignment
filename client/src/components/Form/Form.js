@@ -13,7 +13,7 @@ const Form = ({ currentId, setCurrentId }) => {
     title: "",
     message: "",
     tags: "",
-    selectedFile: "",
+    videoLink: "",
   });
   const user = JSON.parse(localStorage.getItem("profile"));
   // find the post with that id. if not found return null
@@ -56,7 +56,7 @@ const Form = ({ currentId, setCurrentId }) => {
       title: "",
       message: "",
       tags: "",
-      selectedFile: "",
+      videoLink: "",
     });
   };
 
@@ -104,15 +104,16 @@ const Form = ({ currentId, setCurrentId }) => {
               setPostData({ ...postData, tags: e.target.value.split(",") })
             }
           />
-          <div className={classes.fileInput}>
-            <FileBase
-              type="file"
-              multiple={false}
-              onDone={({ base64 }) =>
-                setPostData({ ...postData, selectedFile: base64 })
-              }
-            />
-          </div>
+          <TextField
+            name="tags"
+            variant="outlined"
+            label="Video Link"
+            fullWidth
+            value={postData.videoLink}
+            onChange={(e) =>
+              setPostData({ ...postData, videoLink: e.target.value })
+            }
+          />
           <Button
             className={classes.buttonSubmit}
             variant="contained"
